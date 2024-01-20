@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { AppContext, Location, PropCity } from "@/context";
+import { AppContext, Location } from "@/context";
 
 const initialSearchState = {
   currentStates: [],
@@ -8,7 +8,6 @@ const initialSearchState = {
 };
 
 const City = () => {
-  const country = localStorage.getItem("country");
   const { currentCity, location, setCurrentCity } = useContext(AppContext);
   const navigate = useRouter();
   const [search, setSearch] = useState(initialSearchState);
@@ -19,8 +18,6 @@ const City = () => {
 
   const handleClickLocation = (state: Location) => {
     setCurrentCity?.(state);
-    localStorage.removeItem("country");
-    localStorage.setItem("state", state.name);
     navigate.push("/weather");
     console.log(currentCity);
   };

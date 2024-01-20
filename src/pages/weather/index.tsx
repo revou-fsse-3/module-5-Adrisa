@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 const Weather = () => {
   const [forcastDates, setForcastDates] = useState([]);
   const navigate = useRouter();
-  const token = localStorage.getItem("state");
+
   const { currentCity } = useContext(AppContext);
 
   const cityName = currentCity?.name;

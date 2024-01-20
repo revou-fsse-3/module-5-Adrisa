@@ -18,7 +18,7 @@ const Home = ({ data }: Props) => {
 
   const handleClickLocation = (country: Location) => {
     setLocation?.(country);
-    localStorage.setItem("country", country.name);
+
     navigate.push("/city");
   };
 

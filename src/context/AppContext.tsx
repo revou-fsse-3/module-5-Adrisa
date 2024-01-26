@@ -1,4 +1,10 @@
-import { Dispatch, ReactNode, createContext, useState } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  createContext,
+  useState,
+  useContext,
+} from "react";
 
 interface Props {
   children: ReactNode;
@@ -43,4 +49,12 @@ export const AppContextProvider = ({ children }: Props) => {
   const [currentCity, setCurrentCity] = useState<PropCity>();
   const value = { location, setLocation, currentCity, setCurrentCity };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+};
+
+export const useLocation = () => {
+  const context = useContext(AppContext);
+  if (!context) {
+    throw new Error("usesUser must be used within a AppProvider");
+  }
+  return context;
 };
